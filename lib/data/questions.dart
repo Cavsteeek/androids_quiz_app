@@ -1,3 +1,4 @@
+/*
 import 'package:quiz_app/models/quiz_questions.dart';
 
 const questions = [
@@ -96,3 +97,104 @@ const questions = [
     ],
   ),
 ];
+*/
+
+import 'package:quiz_app/models/quiz_questions.dart';
+
+const questions = [
+  QuizQuestion(
+    'What is the primary building block of Kotlin code?',
+    [
+      'Functions',
+      'Classes',
+      'Objects',
+      'Blocks',
+    ],
+  ),
+  QuizQuestion(
+    'How is a function defined in Kotlin?',
+    [
+      'By using the fun keyword',
+      'By using the def keyword',
+      'By using the function keyword',
+      'By using the val keyword',
+    ],
+  ),
+  QuizQuestion(
+    'What is the purpose of a data class in Kotlin?',
+    [
+      'Store and manage data',
+      'Define UI components',
+      'Handle exceptions',
+      'Create abstract classes',
+    ],
+  ),
+  QuizQuestion(
+    'Which keyword should you use to create a variable in Kotlin?',
+    [
+      'val',
+      'var',
+      'Both are equally good',
+      'None of the above',
+    ],
+  ),
+  QuizQuestion(
+    'What happens if you change the value of a variable declared with val?',
+    [
+      'You get a compile-time error',
+      'The value is updated',
+      'The closest var variable is updated',
+      'Any nested var variables are updated',
+    ],
+  ),
+  QuizQuestion(
+    'How should you update the value of a mutable variable in Kotlin?',
+    [
+      'By assigning a new value to it',
+      'By calling updateData()',
+      'By calling updateUI()',
+      'By calling updateState()',
+    ],
+  ),
+  QuizQuestion(
+    'What is the default visibility modifier for Kotlin functions and variables?',
+    [
+      'public',
+      'private',
+      'protected',
+      'internal',
+    ],
+  ),
+  QuizQuestion(
+    'Which keyword should you use to declare a function in Kotlin?',
+    ['fun', 'class', 'val', 'return'],
+  ),
+  QuizQuestion(
+    'How can you pass a lambda function in Kotlin?',
+    [
+      'Using the {} syntax',
+      'using a callback function',
+      'using a stateful object',
+      'using a global variable'
+    ],
+  ),
+  QuizQuestion(
+    'Which type is used to store a whole number in Kotlin?',
+    [
+      'Int',
+      'Double',
+      'String',
+      'Boolean',
+    ],
+  ),
+  QuizQuestion(
+    'Which type is used to store a sequence of characters in Kotlin?',
+    [
+      'String',
+      'Char',
+      'Array',
+      'List',
+    ],
+  ),
+];
+

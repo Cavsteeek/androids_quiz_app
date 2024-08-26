@@ -24,7 +24,7 @@ class StartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 80),
           Text(
-            "Learn Flutter!",
+            "Learn Kotlin!",
             style: GoogleFonts.poppins(
               fontSize: 28,
               fontWeight: FontWeight.bold,
