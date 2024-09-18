@@ -1,33 +1,24 @@
-/// This code defines a `ResultsScreen` widget in Flutter that displays a list of chosen answers and
-/// questions, along with a button to restart the quiz. The `chosenAnswers` parameter is passed into
-/// the widget's constructor to display the list of answers. The widget is built using a `SizedBox` and
-/// a `Container` with a `Column` of child widgets, including `Text` and `TextButton` widgets.
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_summary/questions_summer.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({super.key, required this.chosenAnswers});
-  //passing data into a widget, it must be passed in a constructor function method
   final List<String> chosenAnswers;
 
+  // Method to get summary data
   List<Map<String, Object>> getSummaryData() {
     List<Map<String, Object>> summary = [];
     for (var i = 0; i < chosenAnswers.length; i++) {
       summary.add(
         {
-          //keys
           'question_index': i,
-          //questions[i].text stores the questions answers and text
-          'questions': questions[i].text,
-          //we create a correct_answers map that will store the current questions and
-          //the correct answer is the first option in each question
+          'question': questions[i].text,
           'correct_answer': questions[i].answers[0],
           'user_answer': chosenAnswers[i],
         },
       );
     }
-
     return summary;
   }
 
@@ -38,6 +29,7 @@ class ResultsScreen extends StatelessWidget {
     final numCorrectQuestions = summaryData.where((data) {
       return data['user_answer'] == data['correct_answer'];
     }).length;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -46,18 +38,48 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-                "You have answered $numCorrectQuestions correctly out of $numTotalQuestions questions"),
+              "You have answered $numCorrectQuestions correctly out of $numTotalQuestions questions",
+              style: const TextStyle(fontSize: 18),
+            ),
             const SizedBox(
               height: 30,
             ),
-            QuestionsSummary(summaryData: getSummaryData()),
+            // Display the summary of questions with icons
+            Expanded(
+              child: ListView.builder(
+                itemCount: summaryData.length,
+                itemBuilder: (context, index) {
+                  final data = summaryData[index];
+                  final bool isCorrect =
+                      data['user_answer'] == data['correct_answer'];
+
+                  return ListTile(
+                    leading: Icon(
+                      isCorrect ? Icons.check_circle : Icons.cancel,
+                      color: isCorrect ? Colors.green : Colors.red,
+                    ),
+                    title: Text(
+                      data['question'] as String,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    subtitle: Text(
+                      "Your answer: ${data['user_answer']} \nCorrect answer: ${data['correct_answer']}",
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  );
+                },
+              ),
+            ),
             const SizedBox(
               height: 30,
             ),
+            // Button to restart the quiz
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                // Logic to restart the quiz can be implemented here
+              },
               child: const Text(
-                "Refresh to restart quiz",
+                "Restart Quiz",
                 style: TextStyle(color: Colors.white),
               ),
             ),
