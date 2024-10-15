@@ -1,5 +1,3 @@
-/// The Quiz class is a stateful widget that manages the flow of the quiz app by switching between the
-/// start screen, question screen, and results screen based on user interactions.
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_screen.dart';
@@ -16,19 +14,17 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  // this is a map list function that will collect all the selected answers and store in in the selectedAnswers location in memory
-  //final List<String> selectedAnswers = [];
-  //removing the final cause we want a user to be able to re-attempt the quiz after a previous attempt.
   List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
-//displays the question screen widget after you click the start quiz button
+
+  // Displays the question screen widget after you click the start quiz button
   void switchScreen() {
     setState(() {
       activeScreen = 'question-screen';
     });
   }
 
-//this function holds all the slected answers together
+  // This function holds all the selected answers together
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
 
@@ -39,6 +35,14 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  // Method to restart the quiz
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = 'start-screen';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget screenWidget;
@@ -47,14 +51,14 @@ class _QuizState extends State<Quiz> {
       screenWidget = QuestionsScreen(
         onSelectAnswer: chooseAnswer,
       );
+    } else if (activeScreen == 'results-screen') {
+      screenWidget = ResultsScreen(
+        chosenAnswers: selectedAnswers,
+        onRestartQuiz: restartQuiz, // Pass the restart logic here
+      );
     } else {
       screenWidget = StartScreen(
         onStartQuiz: switchScreen,
-      );
-    }
-    if (activeScreen == 'results-screen') {
-      screenWidget = ResultsScreen(
-        chosenAnswers: selectedAnswers,
       );
     }
 
@@ -72,7 +76,7 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: screenWidget, 
+          child: screenWidget,
         ),
       ),
     );
