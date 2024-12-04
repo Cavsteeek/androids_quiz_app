@@ -43,7 +43,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             Text(
               currentQuestion.text,
               style: GoogleFonts.acme(
-                color: const Color.fromARGB(255, 242, 225, 225),
+                color: Colors.black,
                 fontSize: 24,
               ),
               textAlign: TextAlign.center,

@@ -16,7 +16,7 @@ class StartScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Opacity(
-            opacity: 0.1,
+            opacity: 0.5,
             child: Image.asset(
               'assets/images/quiz-logo.png',
               width: 300,
@@ -28,14 +28,14 @@ class StartScreen extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 28,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 30),
           OutlinedButton.icon(
             onPressed: onStartQuiz,
             style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
+              foregroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),

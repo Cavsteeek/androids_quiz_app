@@ -42,14 +42,14 @@ class ResultsScreen extends StatelessWidget {
               child: Text(
                 "You have answered $numCorrectQuestions correctly out of $numTotalQuestions questions",
                 style: const TextStyle(
-                  fontSize: 24, // Larger font size
+                  fontSize: 22, // Larger font size
                   fontWeight: FontWeight.bold, // Bold for better emphasis
-                  color: Colors.black87, // Dark refined color
+                  color: Colors.black, // Dark refined color
                 ),
                 textAlign: TextAlign.center, // Center align the text
               ),
             ),
-            const SizedBox(height: 20), // Add extra spacing below the text
+            const SizedBox(height: 18), // Add extra spacing below the text
 
             // Display the summary of questions with icons
             Expanded(
@@ -67,18 +67,18 @@ class ResultsScreen extends StatelessWidget {
                     ),
                     title: Text(
                       data['question'] as String,
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 14),
                     ),
                     subtitle: Text(
                       "Your answer: ${data['user_answer']} \nCorrect answer: ${data['correct_answer']}",
-                      style: const TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   );
                 },
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             // Button to restart the quiz
             TextButton(
@@ -87,9 +87,9 @@ class ResultsScreen extends StatelessWidget {
                 "Restart Quiz",
                 // style: TextStyle(color: Colors.white),
                   style: const TextStyle(
-                    fontSize: 24, // Larger font size
+                    fontSize: 22, // Larger font size
                     fontWeight: FontWeight.bold, // Bold for better emphasis
-                    color: Colors.black87, // Dark refined color
+                    color: Colors.black, // Dark refined color
                   ),
                   textAlign: TextAlign.center,
               ),
